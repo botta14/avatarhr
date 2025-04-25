@@ -1,0 +1,32 @@
+/* src/components/VisionMission.css */
+
+.missionBoxStyles {
+    background-color: #0A1F33;
+    color: white;
+    padding: 25px;
+    border: 5px solid #00bcd4;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.missionBox {
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    background-color: rgba(10, 31, 51, 0.9);
+}
+
+.imgBorder {
+    padding: 5px;
+    background: linear-gradient(135deg, #00bcd4, #70e1f5);
+    border-radius: 10px;
+}
+
+.customImage {
+    border-radius: 10px;
+    display: block;
+    width: 100%;
+    height: auto;
+}

@@ -1,0 +1,40 @@
+.demo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px);
+    padding-top: 200px;
+    margin-bottom: 70px;
+    /* ✅ ترك مسافة بعد الـ Navbar */
+    /* background-color: #364751; */
+    /* background: linear-gradient(10deg, #141D24, #364751); */
+    /* ✅ جعل الخلفية مثل باقي الصفحات */
+    position: relative;
+}
+
+.video-fullscreen {
+    width: 90vw;
+    height: auto;
+    max-height: 80vh;
+    object-fit: cover;
+    cursor: pointer;
+    /* ✅ جعل المؤشر يشير إلى إمكانية التفاعل */
+}
+
+/* ✅ زر التشغيل والإيقاف */
+.play-overlay {
+    position: absolute;
+    bottom: -40px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+body {
+    background: linear-gradient(10deg, #141D24, #364751);
+    color: white;
+    font-family: "Oxanium", serif;
+}

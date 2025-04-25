@@ -1,0 +1,89 @@
+.team-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.overlay-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.team-wrapper:hover .overlay-icons {
+    opacity: 1;
+    transform: scale(1.05);
+    /* تأثير تكبير بسيط عند الهوفر */
+}
+
+.overlay-icons a {
+    color: white;
+    font-size: 20px;
+    background: rgba(0, 188, 212, 0.9);
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.overlay-icons a:hover {
+    transform: scale(1.2);
+    background: rgba(0, 188, 212, 1);
+    /* تغيير اللون عند الهوفر */
+}
+
+.team-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0, 188, 212, 0.5);
+    background: linear-gradient(135deg, #00bcd4, #70e1f5);
+    padding: 0px;
+    margin: 0px auto 0px;
+    display: block;
+}
+
+.team-name {
+    margin: 5px 0 0;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.team-role {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.custom-btn {
+    /* background: linear-gradient(135deg, #00bcd4, #70e1f5); */
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    z-index: 10;
+}
+
+.carousel-control-prev {
+    left: 10%;
+}
+
+.carousel-control-next {
+    right: 10%;
+}

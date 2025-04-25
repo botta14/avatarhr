@@ -1,0 +1,65 @@
+.BodyIndex {
+    /* background: linear-gradient(10deg, #141D24, #364751); */
+    background-color: #364751;
+    color: white;
+    font-family: "Oxanium", serif;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+h2 {
+    font-size: 3.4rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.btn-primary {
+    background-color: #002E47;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.3rem;
+}
+
+.btn-primary:hover {
+    background-color: #E7F7FF;
+    color: black;
+}
+
+.btn-secondary {
+    background-color: #E7F7FF;
+    color: black;
+}
+
+.btn-secondary:hover {
+    background-color: #002E47;
+    color: white;
+}
+
+.BodyIndex {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-fluid {
+    flex: 1;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+
+.altBtn {
+    background-color: white !important;
+    color: #00bcd4 !important;
+}
+
+.altBtn:hover {
+    background-color: #00bcd4 !important;
+    color: white !important;
+}

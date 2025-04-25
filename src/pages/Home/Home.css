@@ -1,0 +1,177 @@
+.features {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 5rem;
+}
+
+.BodyHome {
+    background-color: #e7f7ff;
+}
+
+/* Box Styles */
+.boxStyle,
+.boxStyle2 {
+    border: 1px solid #47a4d7;
+    border-radius: 3%;
+    padding: 10px 20px;
+}
+
+.boxStyle {
+    background-color: white;
+}
+
+.boxStyle2 {
+    background: linear-gradient(10deg, #176d9d, #002e47);
+    color: white;
+}
+
+.textBoxStyle {
+    background: linear-gradient(300deg, #176d9d, #002e47);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* تحسين استجابة الصناديق */
+@media (max-width: 768px) {
+
+    .boxStyle,
+    .boxStyle2 {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+    .col-md-7,
+    .col-md-4 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .col-md-4 form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-md-4 form input {
+        width: 80%;
+    }
+}
+
+/* تحسين تصميم الأسئلة */
+.faq-item {
+    cursor: pointer;
+    padding: 15px 0;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: black;
+}
+
+/* تحسين مظهر الأجوبة */
+.faq-answer {
+    display: none;
+    color: #47a4d7;
+    padding-top: 10px;
+}
+
+/* تحسين شكل الخط الفاصل */
+.faq-item hr {
+    border: 0;
+    height: 2px;
+    background: linear-gradient(to right, #ccc, #999, #ccc);
+    margin-top: 10px;
+}
+
+/* إضافة تأثير عند مرور الماوس */
+.more-faq-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: black;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* عند التمرير على الرابط */
+.more-faq-link:hover {
+    color: #ffbc00;
+    /* تغيير اللون إلى الأصفر عند التمرير */
+    transform: translateX(5px);
+    /* تحريك الرابط 5px نحو اليمين */
+}
+
+/* تحريك الأيقونة عند التمرير */
+.more-faq-link:hover i {
+    transform: translateX(5px);
+    /* تحريك الأيقونة نفس حركة الرابط */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.why-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.why-image:hover {
+    transform: scale(1.02);
+}
+
+/* تحسين صندوق الأيقونة */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #17a2b8;
+    /* لون مطابق */
+    border-radius: 5%;
+    margin: 0 auto 15px;
+    /* يجعل العنصر في المنتصف */
+}
+
+/* تحسين الأيقونة */
+.icon-box i {
+    color: white;
+    font-size: 24px;
+}
+
+.icon-box:hover {
+    background: #0d5560;
+}

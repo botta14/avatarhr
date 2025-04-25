@@ -1,0 +1,81 @@
+.footer-logo {
+    height: 50px;
+    width: auto;
+}
+
+/* تثبيت الفوتر في الأسفل */
+html,
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.BodyIndex {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* الفوتر يبقى دائمًا أسفل الصفحة */
+.footer {
+    margin-top: auto;
+    background: #061429;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+}
+
+/* Footer Links */
+.footer-about a:hover,
+.footer-about p:hover {
+    color: #00bcd4;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Form Styling */
+.footer-about form input,
+.footer-about form button {
+    border-radius: 5px;
+}
+
+/* Button Hover Effect */
+.btn-primary:hover {
+    background-color: #00bcd4;
+    border-color: #00bcd4;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Social Media Icon Hover */
+.btn-primary .fab:hover {
+    color: #000000;
+}
+
+/* Try Avatar Button */
+.btn-primary.btn-lg {
+    font-size: 18px;
+    padding: 12px 25px;
+    border-radius: 10px;
+}
+
+.btn-primary.btn-lg:hover {
+    background-color: #00bcd4;
+    border-color: #00bcd4;
+}
+
+/* Learn More Animation */
+.learn-more-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.learn-more-link:hover {
+    color: #00bcd4;
+    transform: translateX(5px);
+}
+
+.learn-more-link:hover i {
+    transform: translateX(3px);
+}

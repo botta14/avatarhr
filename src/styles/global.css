@@ -1,0 +1,16 @@
+* {
+    font-family: "Oxanium", serif !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-left: 0%;
+    padding-right: 0%;
+    background-color: #364751;
+
+}
