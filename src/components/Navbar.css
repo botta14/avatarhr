@@ -1,79 +1,307 @@
-/* Navbar */
-nav {
-    font-size: 1rem;
-    position: sticky;
+/* Modern Navbar Styling */
+:root {
+    --primary-color: #4361ee;
+    --primary-hover: #3a56d4;
+    --secondary-color: #7209b7;
+    --accent-color: #00c2cb;
+    --light-bg: #f8f9fa;
+    --dark-bg: #10172a;
+    --text-light: #f8f9fa;
+    --text-dark: #212529;
+    --border-radius: 8px;
+    --transition: all 0.25s ease-in-out;
+  }
+  
+  /* Navbar Base Styles - Fixed Design */
+  .navbar {
+    padding: 1rem 0 !important;
+    font-family: 'Inter', sans-serif;
+    background: #10172a;
+      position: fixed;
     top: 0;
+    width: 100%;
     z-index: 1000;
-    padding-left: 0%;
-    padding-right: 0%;
-}
+    border-bottom:  1px solid rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .navbar-logo {
+    height: 40px;
+    width: auto;
+  }
+  
+  .brand-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-dark);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Navigation Links with Gradient Hover */
+  .nav-link {
+    font-weight: 500;
+    margin: 0 0.75rem;
+    padding: 0.5rem 0.25rem !important;
+    position: relative;
+    transition: var(--transition);
 
-.nav-link {
-    transition: all 0.3s ease;
-    color: var(--text-color);
-}
-
-.nav-link:hover {
-    color: #00bcd4;
-}
-
-.buttonStyleNavBar {
-    color: #00bcd4;
-    font-size: .3rem;
-    border: 1px solid #00bcd4;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-.buttonStyleNavBar:hover {
-    background: #00bcd4;
-    color: var(--text-color);
-}
-
-.navbar {
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-/* عند التمرير */
-.navbar.scrolled {
-    transform: translateY(0);
-    background: linear-gradient(to bottom, #0A1F33 50%, #0A1F33 10%);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.navbar.scrolled .nav-link,
-.navbar.scrolled .navbar-brand span {
     color: white !important;
-}
-
-
-/* before scroll (Landing page only) */
-nav {
-    font-size: 1.3rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: transparent;
-}
-
-/* after scroll (all pages) */
-.scrolled {
-    background-color: #0A1F33 !important;
-}
-
-
-.buttonStyleGradient {
-    background: linear-gradient(to right, #00bcd4, #2196f3);
-    color: white;
-    padding: 0.4rem 1.2rem;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    opacity: 0;
+    transition: var(--transition);
+  }
+  
+  .nav-link:hover {
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+    opacity: 1;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
     border: none;
-}
-
-.buttonStyleGradient:hover {
-    background: linear-gradient(to right, #2196f3, #00bcd4);
-    transform: scale(1.05);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 0.75rem 0;
+    min-width: 200px;
+    margin-top: 1rem;
+  }
+  
+  .dropdown-menu-animated {
+    animation: dropdown-fade 0.3s ease-in-out;
+  }
+  
+  .dropdown-item {
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  
+  .dropdown-item:hover {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+  }
+  
+  @keyframes dropdown-fade {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Navigation Button */
+  .nav-button {
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  
+  .login-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border: none;
     color: white;
-}
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+  }
+  
+  .login-button:hover {
+    background: linear-gradient(45deg, var(--primary-hover), var(--accent-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+  }
+  
+  /* Auth Modal Styling */
+  .auth-modal {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .auth-modal .modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .auth-modal .modal-header {
+    border-bottom: none;
+    padding: 1.5rem 1.5rem 0.5rem;
+  }
+  
+  .auth-modal .modal-title {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+  }
+  
+  .auth-modal .close {
+    color: var(--text-dark);
+    opacity: 0.7;
+    transition: var(--transition);
+  }
+  
+  .auth-modal .close:hover {
+    opacity: 1;
+  }
+  
+  /* Auth Tabs */
+  .auth-tabs .nav-link {
+    color: var(--text-dark);
+    opacity: 0.7;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem !important;
+    border: none;
+  }
+  
+  .auth-tabs .nav-link.active {
+    color: var(--primary-color);
+    opacity: 1;
+    background: transparent;
+    border-bottom: 2px solid var(--primary-color);
+  }
+  
+  /* Form Controls */
+  .form-floating .form-control {
+    border-radius: var(--border-radius);
+    border: 1px solid #dee2e6;
+    padding: 1rem 0.75rem;
+    height: calc(3.5rem + 2px);
+    transition: var(--transition);
+  }
+  
+  .form-floating .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+  }
+  
+  .form-floating label {
+    padding: 1rem 0.75rem;
+  }
+  
+  .form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .forgot-password, .terms-link {
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  
+  .forgot-password:hover, .terms-link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline !important;
+  }
+  
+  /* Auth Buttons */
+  .auth-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+    padding: 0.75rem;
+  }
+  
+  .auth-button:hover {
+    background: linear-gradient(45deg, var(--primary-hover), var(--accent-color));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+  }
+  
+  /* Divider with text */
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #6c757d;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .divider span {
+    padding: 0 1rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Social Auth Buttons */
+  .social-auth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dee2e6;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    background-color: white;
+    transition: var(--transition);
+  }
+  
+  .social-auth-button:hover {
+    background-color: #f8f9fa;
+    border-color: #c8ccd0;
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .nav-link {
+      padding: 0.75rem 1rem !important;
+      margin: 0;
+    }
+    
+    .nav-item {
+      margin-bottom: 0.5rem;
+    }
+    
+    .nav-button {
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .auth-modal .modal-body {
+      padding: 1rem;
+    }
+    
+    .social-auth-button {
+      font-size: 0.875rem;
+    }
+  }

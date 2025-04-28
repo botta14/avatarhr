@@ -9,7 +9,6 @@ import Pricing from "../../components/Pricing";
 const Home = () => {
     return (
         <div className="BodyHome">
-            <Navbar />
             <Features />
             <HowItWorks />
             <WhyChooseUs />

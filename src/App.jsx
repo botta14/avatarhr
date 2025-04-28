@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Landing from "./pages/Landing/Landing";
 import Demo from "./pages/Demo/Demo";
-import About from "./pages/About/About"; // ✅ أضف السطر ده
+import About from "./pages/About/About"; 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import '@fortawesome/fontawesome-free/css/all.min.css';

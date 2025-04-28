@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "./Pricing.css";
 
 const Pricing = () => {
@@ -36,19 +37,96 @@ const Pricing = () => {
         },
     ];
 
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+            },
+        },
+    };
+
+    const cardVariants = {
+        hidden: { y: 50, opacity: 0 },
+        visible: { 
+            y: 0, 
+            opacity: 1,
+            transition: { 
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+            }
+        },
+        hover: { 
+            y: -15,
+            boxShadow: "0px 15px 30px rgba(0, 0, 0, 0.1)",
+            transition: { type: "spring", stiffness: 300 }
+        }
+    };
+
+    const featureVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: { opacity: 1, x: 0 }
+    };
+
     return (
-        <div className="container-fluid py-5">
+        <div className="pricing-section py-5">
             <div className="container py-5">
-                <div className="section-title text-center position-relative pb-3 mb-5 mx-auto">
-                    <h5 className="fw-bold text-black text-uppercase">Pricing Plans</h5>
-                    <h4 className="mb-0 text-info">Affordable Plans for Every Business Size</h4>
-                </div>
-                <div className="row g-4">
+                <motion.div 
+                    className="section-title text-center position-relative pb-3 mb-5 mx-auto"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <motion.h5 
+                        className="fw-bold text-black text-uppercase"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        Pricing Plans
+                    </motion.h5>
+                    <motion.h4 
+                        className="mb-0 text-info"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                    >
+                        Affordable Plans for Every Business Size
+                    </motion.h4>
+                </motion.div>
+                
+                <motion.div 
+                    className="row g-4"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
                     {pricingPlans.map((plan, index) => (
                         <div key={index} className="col-lg-4">
-                            <div className={`pricing-card ${plan.isFeatured ? "featured" : ""}`}>
+                            <motion.div 
+                                className={`pricing-card ${plan.isFeatured ? "featured" : ""}`}
+                                variants={cardVariants}
+                                whileHover="hover"
+                            >
                                 <div className="pricing-header">
                                     <h4 className="text-primary">{plan.title}</h4>
+                                    {plan.isFeatured && (
+                                        <motion.div 
+                                            className="popular-badge"
+                                            initial={{ rotate: -3 }}
+                                            animate={{ rotate: 3 }}
+                                            transition={{ 
+                                                repeat: Infinity, 
+                                                repeatType: "reverse", 
+                                                duration: 1.5 
+                                            }}
+                                        >
+                                            Popular
+                                        </motion.div>
+                                    )}
                                 </div>
                                 <div className="pricing-body text-black">
                                     <h1 className="display-5">
@@ -56,26 +134,38 @@ const Pricing = () => {
                                         {plan.price}
                                         {plan.price !== "Free" && <small>/ Month</small>}
                                     </h1>
-                                    <ul className="pricing-features">
+                                    <motion.ul 
+                                        className="pricing-features"
+                                        initial="hidden"
+                                        animate="visible"
+                                        transition={{ staggerChildren: 0.1, delayChildren: 0.3 }}
+                                    >
                                         {plan.features.map((feature, i) => (
-                                            <li key={i}>
-                                                {feature.text}{" "}
+                                            <motion.li 
+                                                key={i}
+                                                variants={featureVariants}
+                                                transition={{ duration: 0.3 }}
+                                            >
+                                                <span>{feature.text}</span>
                                                 <i
                                                     className={`fa ${feature.included ? "fa-check text-primary" : "fa-times text-danger"}`}
                                                     aria-hidden="true"
                                                 ></i>
-                                            </li>
+                                            </motion.li>
                                         ))}
-                                    </ul>
-                                    {/* استبدال <a> بزر <button> لتجنب التحذيرات */}
-                                    <button className="btn btn-primary px-5">
+                                    </motion.ul>
+                                    <motion.button 
+                                        className="btn btn-primary px-5 mt-4"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                    >
                                         {plan.price === "Free" ? "Start Free Trial" : "Order Now"}
-                                    </button>
+                                    </motion.button>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </div>
     );

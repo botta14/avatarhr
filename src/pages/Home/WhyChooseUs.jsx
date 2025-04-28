@@ -1,77 +1,177 @@
-import React from "react";
-import "./Home.css";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { FaBrain, FaClock, FaChartLine, FaHeadset } from "react-icons/fa";
+import "./WhyChooseUs.css";
 
 const WhyChooseUs = () => {
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+    
+    const featureData = [
+        {
+            icon: <FaBrain />,
+            title: "AI-Powered Avatars",
+            description: "Our cutting-edge avatars simulate lifelike interactions, bridging the gap between AI and human experience."
+        },
+        {
+            icon: <FaClock />,
+            title: "Flexible and On-Demand",
+            description: "Access interview practice anytime, anywhere, with sessions that fit your schedule."
+        },
+        {
+            icon: <FaChartLine />,
+            title: "AI-Driven Insights",
+            description: "Leverage advanced analytics to understand your strengths and areas for improvement after each session."
+        },
+        {
+            icon: <FaHeadset />,
+            title: "24/7 Support",
+            description: "Our dedicated support team is always available to address your questions and ensure your success."
+        }
+    ];
+    
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.2,
+            }
+        }
+    };
+    
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: { 
+                duration: 0.5, 
+                ease: [0.25, 0.1, 0.25, 1.0] 
+            }
+        }
+    };
+    
+    const imageVariants = {
+        hidden: { opacity: 0, scale: 0.8, rotateY: 10 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            rotateY: 0,
+            transition: {
+                duration: 0.8,
+                ease: "easeOut"
+            }
+        }
+    };
+
     return (
-        <section className="container-fluid py-5">
-            <div className="container py-5">
-                <div className="section-title text-center pb-3 mb-5 mx-auto" style={{ maxWidth: "600px" }}>
-                    <h5 className="fw-bold text-black text-uppercase">Why Choose Us</h5>
-                    <h4 className="mb-0 text-info">Experience the Future of Virtual Meetings</h4>
-                </div>
-                <div className="row g-5 align-items-center">
-                    {/* Left Features */}
-                    <div className="col-lg-4">
-                        <div className="row g-5">
-                            <div className="col-12 text-center">
-                                <div className="icon-box mx-auto d-flex align-items-center justify-content-center">
-                                    <i className="fa-solid fa-brain"></i>
-                                </div>
-                                <h4 className="text-black">AI-Powered Avatars</h4>
-                                <p className="mb-0 text-secondary">
-                                    Our cutting-edge avatars simulate lifelike interactions, bridging the gap between AI and human experience.
-                                </p>
-                            </div>
-
-                            <div className="col-12 text-center">
-                                <div className="icon-box">
-                                    <i className="fa-solid fa-clock"></i>
-                                </div>
-                                <h4 className="text-black">Flexible and On-Demand</h4>
-                                <p className="mb-0 text-secondary">
-                                    Access interview practice anytime, anywhere, with sessions that fit your schedule.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Center Image */}
-                    <div className="col-lg-4">
-                        <div className="position-relative h-100">
-                            <img
-                                className="why-image shadow"
-                                src="../images/123.jpg"
-                                alt="Virtual Meeting"
+        <section ref={sectionRef} className="why-choose-section">
+            <div className="why-choose-background">
+                <div className="blob blob-5"></div>
+                <div className="blob blob-6"></div>
+            </div>
+            
+            <div className="container">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6 }}
+                    className="section-header"
+                >
+                    <h2 className="section-title">
+                        Why <span className="gradient-text">Choose Us</span>
+                    </h2>
+                    <p className="section-subtitle">
+                        Experience the future of virtual interviews with our innovative platform
+                    </p>
+                </motion.div>
+                
+                <div className="why-choose-content">
+                    <motion.div 
+                        className="features-left"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        custom={0}
+                    >
+                        {featureData.slice(0, 2).map((feature, index) => (
+                            <FeatureCard 
+                                key={index} 
+                                feature={feature} 
+                                variants={itemVariants}
+                                alignment="right"
+                                index={index}
                             />
-                        </div>
-                    </div>
-
-                    {/* Right Features */}
-                    <div className="col-lg-4">
-                        <div className="row g-5">
-                            <div className="col-12 text-center">
-                                <div className="icon-box">
-                                    <i className="fa-solid fa-chart-line"></i>
-                                </div>
-                                <h4 className="text-black">AI-Driven Insights</h4>
-                                <p className="mb-0 text-secondary">
-                                    Leverage advanced analytics to understand your strengths and areas for improvement after each session.
-                                </p>
-                            </div>
-                            <div className="col-12 text-center">
-                                <div className="icon-box">
-                                    <i className="fa-solid fa-headset"></i>
-                                </div>
-                                <h4 className="text-black">24/7 Support</h4>
-                                <p className="mb-0 text-secondary">
-                                    Our dedicated support team is always available to address your questions and ensure your success.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                        ))}
+                    </motion.div>
+                    
+                    <motion.div 
+                        className="image-container"
+                        variants={imageVariants}
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                    >
+                        <div className="image-glow"></div>
+                        <motion.img
+                            src="../images/123.jpg"
+                            alt="Virtual Meeting"
+                            className="feature-image"
+                            whileHover={{ 
+                                scale: 1.05,
+                                transition: { duration: 0.3 }
+                            }}
+                        />
+                    </motion.div>
+                    
+                    <motion.div 
+                        className="features-right"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        custom={1}
+                    >
+                        {featureData.slice(2, 4).map((feature, index) => (
+                            <FeatureCard 
+                                key={index} 
+                                feature={feature} 
+                                variants={itemVariants}
+                                alignment="left"
+                                index={index + 2}
+                            />
+                        ))}
+                    </motion.div>
                 </div>
             </div>
         </section>
+    );
+};
+
+const FeatureCard = ({ feature, variants, alignment, index }) => {
+    return (
+        <motion.div 
+            className={`feature-item feature-${alignment}`}
+            variants={variants}
+            custom={index}
+            whileHover={{ y: -5 }}
+        >
+            <motion.div 
+                className="feature-icon"
+                whileHover={{ 
+                    rotate: 5, 
+                    scale: 1.1,
+                    transition: { type: "spring", stiffness: 300 }
+                }}
+            >
+                {feature.icon}
+            </motion.div>
+            
+            <div className="feature-content">
+                <h3 className="feature-title">{feature.title}</h3>
+                <p className="feature-description">{feature.description}</p>
+            </div>
+        </motion.div>
     );
 };
 

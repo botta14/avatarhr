@@ -1,32 +1,376 @@
-/* src/components/VisionMission.css */
-
-.missionBoxStyles {
-    background-color: #0A1F33;
-    color: white;
-    padding: 25px;
-    border: 5px solid #00bcd4;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+:root {
+    --primary: #06b6d4;
+    --primary-light: rgba(6, 182, 212, 0.1);
+    --accent: #6366f1;
+    --accent-light: rgba(99, 102, 241, 0.1);
+    --accent-gradient: linear-gradient(135deg, var(--primary), var(--accent));
+    --dark: #0f172a;
+    --darker: #020617;
+    --card: #1e293b;
+    --light: #f8fafc;
+    --muted: #94a3b8;
+    --border-radius: 16px;
+    --card-border-radius: 20px;
+    --transition: all 0.3s ease;
+    --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-.missionBox {
-    color: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    height: 100%;
-    background-color: rgba(10, 31, 51, 0.9);
+.vision-mission-section {
+    padding: 120px 0;
+    background-color: var(--dark);
+    color: var(--light);
+    position: relative;
+    overflow: hidden;
 }
 
-.imgBorder {
-    padding: 5px;
-    background: linear-gradient(135deg, #00bcd4, #70e1f5);
-    border-radius: 10px;
+.vision-mission-section::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--primary);
+    filter: blur(180px);
+    opacity: 0.05;
+    z-index: 0;
+    animation: float 15s ease-in-out infinite alternate;
 }
 
-.customImage {
-    border-radius: 10px;
-    display: block;
+.vision-mission-section::after {
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    left: -150px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: var(--accent);
+    filter: blur(180px);
+    opacity: 0.05;
+    z-index: 0;
+    animation: float 20s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+.vision-mission-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 6rem;
+    position: relative;
+}
+
+.section-label {
+    display: inline-block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 8px 16px;
+    background: rgba(6, 182, 212, 0.1);
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: var(--light);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+}
+
+.accent-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.separator {
+    width: 80px;
+    height: 4px;
+    background: var(--accent-gradient);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.vision-mission-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+}
+
+.vision-mission-card {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    position: relative;
+}
+
+.vision-mission-card.reversed {
+    flex-direction: row-reverse;
+}
+
+.card-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.card-content h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    position: relative;
+}
+
+.card-content h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+}
+
+.card-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 2rem;
+}
+
+.card-image {
+    flex: 1;
+    position: relative;
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform 0.8s ease;
+    isolation: isolate;
+}
+
+.vision-mission-card:not(.reversed) .card-image {
+    transform: perspective(1000px) rotateY(-5deg);
+}
+
+.vision-mission-card.reversed .card-image {
+    transform: perspective(1000px) rotateY(5deg);
+}
+
+.vision-mission-card:hover .card-image {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+.card-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(6, 182, 212, 0.1), rgba(99, 102, 241, 0.1));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 50%, rgba(0, 0, 0, 0.4));
+    z-index: 2;
+    opacity: 0.6;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.vision-mission-card:hover .card-image::after {
+    opacity: 0.2;
+}
+
+.card-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--card-border-radius);
+    transition: transform 0.7s ease;
+    transform-origin: center;
+}
+
+.vision-mission-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .vision-mission-card,
+    .vision-mission-card.reversed {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .card-content {
+        padding: 0;
+        text-align: center;
+    }
+    
+    .card-content h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .vision-mission-card .card-image,
+    .vision-mission-card.reversed .card-image {
+        transform: perspective(1000px) rotateY(0);
+    }
+    
+    .card-image {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .vision-mission-section {
+        padding: 80px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .vision-mission-content {
+        gap: 5rem;
+    }
+    
+    .card-content h3 {
+        font-size: 1.8rem;
+    }
+    
+    .card-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Add to VisionMission.css */
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+.feature-list {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+.feature-item i {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.floating-particles {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: var(--accent);
+    filter: blur(150px);
+    opacity: 0.05;
+    z-index: 0;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--accent-gradient);
+    opacity: 0.5;
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: overlay;
+}
+
+.vision-mission-card {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: var(--card-border-radius);
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Responsive updates */
+@media (max-width: 991px) {
+    .feature-list {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .card-icon {
+        margin: 0 auto 1.5rem;
+    }
+}
+
+.testCard{
+    display: flex ;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+
+}
+.textMis{
+    font-size: 1.7rem !important;
 }
